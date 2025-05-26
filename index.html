@@ -1,68 +1,110 @@
 <!DOCTYPE html>
-<html lang="pt-be">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xXx</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Love+Light&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-        body{
-            background-color: red;
-        }
-        .painel{
-            font-family: "Poppins", sans-serif;
-            width: 600px;height: 600px;
-            background-color: wheat;
-            margin: auto;
-            border-radius: 20px;
-            text-align: center;
-            padding-top: 50px;
-        }
-        #sim{
-            height: 40px;
-            width: 60px;
-            background-color: red;
-            border: 2px solid wheat;
-            border-radius: 10px;
-            color: wheat;
-            margin-left: -75px;
-        }
-        #nao{
-            position: absolute;
-            height: 40px;
-            width: 60px;
-            background-color: red;
-            border: 2px solid wheat;
-            border-radius: 10px;
-            color: wheat;
-            margin-left: 10px;
-            }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confissão do Dia dos Namorados 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins :ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: red;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .painel {
+      width: 90%;
+      max-width: 400px;
+      height: auto;
+      min-height: 400px;
+      background-color: wheat;
+      border-radius: 20px;
+      text-align: center;
+      padding: 30px 20px;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    h5 {
+      font-size: 18px;
+      margin: 15px 0;
+    }
+
+    #sim {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: red;
+      color: wheat;
+      border: 2px solid wheat;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #sim:hover {
+      background-color: darkred;
+    }
+
+    #nao {
+      position: absolute;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: red;
+      color: wheat;
+      border: 2px solid wheat;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+  </style>
 </head>
 <body>
-    <div class="painel">
-        <h1>Feliz dia dos namorados</h1>
-        
-        <img src="https://th.bing.com/th/id/R.95e068f57f660978b3edf92f4710a1ce?rik=f%2fbxJqRPiHi9OQ&pid=ImgRaw&r=0" alt="" width="390" height="390">
-        <h5>Aceita namorar comigo?</h5>
-        <a href="https://youtu.be/QJ7Blu65Rbc?si=HagXYyuRoqeXfjP0"><button id="sim"> Sim </button></a>
-        <button onmouseover="fuja()" id="nao"> Não </button>
-    </div>
-    <script>
-        
-        function fuja(){
-            var botaoNao = document.getElementById("nao")
-
-            var larguraJanela = window.innerHeight;
-            var alturaJanela = window.innerWidth;
-            var maxX = larguraJanela - botaoNao.offsetWidth;
-            var maxY = alturaJanela - botaoNao.offsetHeight;
-
-            var aleatorioX = Math.floor(Math.random()*maxX)
-            var aleatorioY = Math.floor(Math.random()*maxY)
-            botaoNao.style.left = aleatorioX + "px";
-            botaoNao.style.top = aleatorioY + "px"
-        }
-    </script>
+  <div class="painel" id="painel">
+    <h1>Feliz dia dos namorados ❤️</h1>
+    <img src="https://th.bing.com/th/id/R.95e068f57f660978b3edf92f4710a1ce?rik=f%2fbxJqRPiHi9OQ&pid=ImgRaw&r=0 " alt="Coração" />
+    <h5>Aceita namorar comigo?</h5>
+    <a href="https://youtu.be/QJ7Blu65Rbc?si=HagXYyuRoqeXfjP0 "><button id="sim">Sim</button></a>
+    <button onmouseover="fuja()" id="nao">Não</button>
+  </div>
+  <script>
+    function fuja() {
+      var botao = document.getElementById("nao");
+      var painel = document.getElementById("painel");
+      var botaoLargura = botao.offsetWidth;
+      var botaoAltura = botao.offsetHeight;
+      var painelRect = painel.getBoundingClientRect();
+      var maxX = painel.clientWidth - botaoLargura;
+      var maxY = painel.clientHeight - botaoAltura;
+      if (maxX < 0) maxX = 0;
+      if (maxY < 0) maxY = 0;
+      var posX = Math.floor(Math.random() * maxX);
+      var posY = Math.floor(Math.random() * maxY);
+      botao.style.left = posX + "px";
+      botao.style.top = posY + "px";
+    }
+  </script>
 </body>
 </html>
